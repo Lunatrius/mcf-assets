@@ -87,7 +87,9 @@ def genbbcode(username, password, threads=[]):
                 p = subprocess.Popen(['git', 'push'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
                 data = p.communicate()
                 stdout = data[0]
+                stderr = data[1]
                 print stdout
+                print stderr
 
 
 # Modified version of: http://stackoverflow.com/questions/3041986/#3041990
