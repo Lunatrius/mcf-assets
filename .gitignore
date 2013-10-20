@@ -1,0 +1,5 @@
+# python
+*.pyc
+
+# custom
+generate.py
