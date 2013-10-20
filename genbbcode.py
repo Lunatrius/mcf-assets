@@ -24,8 +24,6 @@ def genbbcode(username, password, threads=[]):
 
     # for each thread
     for thread in threads:
-        continue
-
         print 'Updating %s [%d]...' % (thread.get('title', 0), thread.get('t', 0))
         # open the thread edit page
         br.open('http://www.minecraftforum.net/index.php?app=forums&module=post&section=post&do=edit_post&f=%d&t=%d&p=%d&st=' % (thread.get('f', 0), thread.get('t', 0), thread.get('p', 0)))
