@@ -4,7 +4,7 @@ import re
 
 
 def threads(base):
-    downloadurl = 'http://lunatri.us/minecraft/mods'
+    downloadurl = 'http://lunatri.us/minecraft'
     return [
         {
             'file': '1296949-misc.bbcode',
