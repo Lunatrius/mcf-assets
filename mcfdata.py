@@ -4,6 +4,7 @@ import re
 
 
 def threads(base):
+    downloadurl = 'http://lunatri.us/minecraft/mods'
     return [
         {
             'file': '1296949-misc.bbcode',
@@ -21,6 +22,7 @@ def threads(base):
                 'light level'
             ],
             'replacement': {
+                'downloadurl': downloadurl,
                 'changelogigi': clean_changelog(base, 'ingameinfo'),
                 'changelogmsg': clean_changelog(base, 'monsterspawnhighlighter'),
                 'changelogstackie': clean_changelog(base, 'stackie')
@@ -39,6 +41,7 @@ def threads(base):
                 'schematic'
             ],
             'replacement': {
+                'downloadurl': downloadurl,
                 'changelog': clean_changelog(base, 'schematica')
             }
         }
