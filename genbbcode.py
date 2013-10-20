@@ -1,17 +1,8 @@
 #!/usr/bin/env python
-import os
-import re
 import sys
-import subprocess
-from argparse import ArgumentParser
-from pprint import pprint
-import mechanize
-
-import urllib
-import urllib2
-import cookielib
-import hashlib
 import time
+import mechanize
+import subprocess
 
 
 # update the thread
@@ -79,7 +70,7 @@ def genbbcode(username, password, threads=[]):
     # attempt to commit the changes
     if stdout.find('nothing to commit, working directory clean') == -1:
         print stdout
-        if query_input('Would you like to commit the changes?', True) == True:
+        if query_input('Would you like to commit the changes?', None) == True:
             p = subprocess.Popen(['git', 'add', '.'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             data = p.communicate()
 
