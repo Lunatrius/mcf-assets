@@ -54,6 +54,8 @@ def genbbcode(username, password, threads=[]):
                 for key, value in thread.get('replacement', {}).items():
                     content = content.replace('%%%s%%' % (key), value)
 
+                content = content.replace('<', '&lt;').replace('>', '&gt;')
+
                 br.form['Post'] = content
         except BaseException as e:
             print 'ERROR! %s' % (e)

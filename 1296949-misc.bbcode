@@ -19,11 +19,20 @@ Display various information directly only you ingame screen.
 
 [b]Note[/b]
 This mod is a fork of [url=http://www.minecraftforum.net/topic/1009577-]bspkrs' version[/url] which he keeps updated with all Minecraft versions past 1.0 (the original author of the mod is DaftPVF).
+As of version 2.4.1.[b]27[/b] InGame Info XML supports bspkrs' text format, however there are a few things that have to be adjusted for it to work as you're used to.
+[list]
+[*]Color codes (&f, &a, &r) have to use the [b]$[/b] symbol instead of the [b]&[/b] symbol (&f => $f, &a => $r, ...).
+[*]The syntax for boolean tags (slimes, daytime, raining, ...; check the download page for a list of all tags) has changed a bit.
+Example: The slime tag would have to be modified from the following
+[code]<slimes[yes/no]>[/code]
+to the following
+[code]<if[slimes[yes/no]]>[/code]
+[/list]
 
 
 [b]Authors[/b] (in chronological order)
 DaftPVF (latest update for 1.0 - [url=http://www.minecraftforum.net/topic/124117-]click![/url])
-bspkrs (latest update for 1.6.2, simple text syntax - [url=http://www.minecraftforum.net/topic/1009577-]click![/url])
+bspkrs (latest update for 1.6.4, simple text syntax - [url=http://www.minecraftforum.net/topic/1009577-]click![/url])
 Lunatrius
 
 
