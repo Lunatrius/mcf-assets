@@ -24,7 +24,7 @@ def threads(base):
             'replacement': {
                 'downloadurl': downloadurl,
                 'changelogigi': clean_changelog(base, 'ingameinfo'),
-                'changelogmsg': clean_changelog(base, 'monsterspawnhighlighter'),
+                'changelogmsh': clean_changelog(base, 'monsterspawnhighlighter'),
                 'changelogstackie': clean_changelog(base, 'stackie'),
                 'changeloglaserlevel': clean_changelog(base, 'laserlevel')
             }
