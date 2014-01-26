@@ -4,6 +4,7 @@ import re
 
 
 def threads(base):
+    wikurl = 'http://mc.lunatri.us/wiki/'
     downloadurl = 'http://mc.lunatri.us/f'
     return [
         {
@@ -12,7 +13,7 @@ def threads(base):
             't': 1296949,
             'p': 15841019,
             'title': 'Lunatrius\' mods',
-            'tag': '1.6.4',
+            'tag': '1.6.4/1.7.2',
             'tags': [
                 'forge',
                 'monster spawn highlighter',
@@ -22,11 +23,13 @@ def threads(base):
                 'light level'
             ],
             'replacement': {
+                'wikurl': wikurl,
                 'downloadurl': downloadurl,
-                'changelogigi': clean_changelog(base, 'ingameinfo'),
-                'changelogmsh': clean_changelog(base, 'monsterspawnhighlighter'),
-                'changelogstackie': clean_changelog(base, 'stackie'),
-                'changeloglaserlevel': clean_changelog(base, 'laserlevel')
+                'changelogcore': clean_changelog(base, 'LunatriusCore'),
+                'changelogigi': clean_changelog(base, 'InGameInfoXML'),
+                'changelogmsh': clean_changelog(base, 'MonsterSpawnHighlighter'),
+                'changelogstackie': clean_changelog(base, 'Stackie'),
+                'changeloglaserlevel': clean_changelog(base, 'LaserLevel')
             }
         },
         {
@@ -42,6 +45,7 @@ def threads(base):
                 'schematic'
             ],
             'replacement': {
+                'wikurl': wikurl,
                 'downloadurl': downloadurl,
                 'changelog': clean_changelog(base, 'schematica')
             }
