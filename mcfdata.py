@@ -13,7 +13,7 @@ def threads(base):
             't': 1296949,
             'p': 15841019,
             'title': 'Lunatrius\' mods',
-            'tag': '1.6.4/1.7.2',
+            'tag': '1.7.2',
             'tags': [
                 'forge',
                 'monster spawn highlighter',
