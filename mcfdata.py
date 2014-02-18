@@ -38,7 +38,7 @@ def threads(base):
             't': 1468779,
             'p': 17870619,
             'title': 'Schematica',
-            'tag': '1.6.4',
+            'tag': '1.6.4/1.7.2-dev',
             'tags': [
                 'forge',
                 'schematica',
