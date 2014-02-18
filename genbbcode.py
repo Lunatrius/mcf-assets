@@ -3,6 +3,7 @@ import sys
 import time
 import mechanize
 import subprocess
+import cookielib
 
 
 # update the thread
@@ -11,16 +12,46 @@ def genbbcode(username, password, threads=[]):
     br = mechanize.Browser()
     br.set_handle_robots(False)
 
-    # open login form
-    br.open('http://www.minecraftforum.net/index.php?app=curseauth&module=global&section=login')
+    # add user agent
+    br.addheaders = [('User-agent', 'Mozilla/5.0 (Windows NT 6.3; Win64; x64; rv:3.6) Gecko/20100101 Firefox/3.6')]
 
-    # select the form and fill in the username/password
-    br.select_form(nr=0)
-    br.form['ips_username'] = username
-    br.form['ips_password'] = password
+    cj = cookielib.LWPCookieJar('cookies.txt')
+    try:
+        cj.load('cookies.txt')
+    except Exception, e:
+        pass
+    cj.save('cookies.txt', ignore_discard=False, ignore_expires=False)
+    br.set_cookiejar(cj)
 
-    # submit the form
-    br.submit()
+    br.open('http://www.minecraftforum.net/')
+
+    # save cookies
+    cj.save('cookies.txt', ignore_discard=False, ignore_expires=False)
+
+    loginlink = None
+    for link in br.links():
+        if ('id', 'sign_in_break') in link.attrs:
+            loginlink = link
+            break
+
+    if loginlink:
+        print 'Trying to log in...'
+        # open login form
+        br.follow_link(link)
+
+        # print the title of the window, just to make sure
+        print '  Title: "%s"' % br.title()
+
+        # select the form and fill in the username/password
+        br.select_form(nr=0)
+        br.form['ips_username'] = username
+        br.form['ips_password'] = password
+
+        # submit the form
+        br.submit()
+
+    # save cookies
+    cj.save('cookies.txt', ignore_discard=False, ignore_expires=False)
 
     # for each thread
     for thread in threads:
@@ -63,6 +94,9 @@ def genbbcode(username, password, threads=[]):
         # submit the form
         br.submit()
 
+    # save cookies
+    cj.save('cookies.txt', ignore_discard=False, ignore_expires=False)
+
     p = subprocess.Popen(['git', 'status'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     data = p.communicate()
     stdout = data[0]
@@ -71,7 +105,7 @@ def genbbcode(username, password, threads=[]):
     if stdout.find('nothing to commit, working directory clean') == -1:
         print stdout
         if query_input('Would you like to commit the changes?', None) == True:
-            p = subprocess.Popen(['git', 'add', '.'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            p = subprocess.Popen(['git', 'add', '-A'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             data = p.communicate()
 
             p = subprocess.Popen(['git', 'diff', '--cached'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -96,24 +130,24 @@ def genbbcode(username, password, threads=[]):
 def query_input(question, default=None):
     valid = {
         True: True,
-        "true": True,
-        "yes": True,
-        "ye": True,
-        "y": True,
+        'true': True,
+        'yes': True,
+        'ye': True,
+        'y': True,
         False: False,
-        "false": False,
-        "no": False,
-        "n": False
+        'false': False,
+        'no': False,
+        'n': False
     }
 
     if default == None:
-        prompt = " [y/n] "
+        prompt = ' [y/n] '
     elif default == True:
-        prompt = " [Y/n] "
+        prompt = ' [Y/n] '
     elif default == False:
-        prompt = " [y/N] "
+        prompt = ' [y/N] '
     else:
-        raise ValueError("Invalid default answer: '%s'" % default)
+        raise ValueError('Invalid default answer: "%s"' % default)
 
     while True:
         sys.stdout.write(question + prompt)
