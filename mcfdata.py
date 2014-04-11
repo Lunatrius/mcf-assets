@@ -5,7 +5,7 @@ import re
 
 def threads(base):
     wikurl = 'http://mc.lunatri.us/wiki/'
-    downloadurl = 'http://mc.lunatri.us/f'
+    downloadurl = 'http://mc.lunatri.us'
     return [
         {
             'file': '1296949-misc.bbcode',
