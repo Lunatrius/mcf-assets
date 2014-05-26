@@ -24,12 +24,7 @@ def threads(base):
             ],
             'replacement': {
                 'wikurl': wikurl,
-                'downloadurl': downloadurl,
-                'changelogcore': clean_changelog(base, 'LunatriusCore'),
-                'changelogigi': clean_changelog(base, 'InGameInfoXML'),
-                'changelogmsh': clean_changelog(base, 'MonsterSpawnHighlighter'),
-                'changelogstackie': clean_changelog(base, 'Stackie'),
-                'changeloglaserlevel': clean_changelog(base, 'LaserLevel')
+                'downloadurl': downloadurl
             }
         },
         {
@@ -46,17 +41,7 @@ def threads(base):
             ],
             'replacement': {
                 'wikurl': wikurl,
-                'downloadurl': downloadurl,
-                'changelog': clean_changelog(base, 'schematica')
+                'downloadurl': downloadurl
             }
         }
     ]
-
-
-def clean_changelog(base, modid):
-    with open(os.path.join(base, modid, 'changelog.txt')) as fh:
-        changelog = ''.join(fh.readlines())
-    changelog = re.sub('jenkins-[a-zA-Z0-9]+-(?=\d)', '#', changelog)
-    changelog = changelog[:2048]
-    changelog = changelog[:changelog.rfind('\n\n')]
-    return changelog.strip()
