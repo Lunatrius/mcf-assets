@@ -1,5 +1,6 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2.7
 import sys
+import json
 import time
 import mechanize
 import subprocess
@@ -30,7 +31,7 @@ def genbbcode(username, password, threads=[]):
 
     loginlink = None
     for link in br.links():
-        if ('id', 'sign_in_break') in link.attrs:
+        if ('id', 'login-link') in link.attrs:
             loginlink = link
             break
 
@@ -42,10 +43,19 @@ def genbbcode(username, password, threads=[]):
         # print the title of the window, just to make sure
         print '  Title: "%s"' % br.title()
 
+        # inital form id
+        frmid = 0
+
+        # find the login form
+        for frm in br.forms():
+            if '/login?' in frm.action:
+                break
+            frmid += 1
+
         # select the form and fill in the username/password
-        br.select_form(nr=0)
-        br.form['ips_username'] = username
-        br.form['ips_password'] = password
+        br.select_form(nr=frmid)
+        br.form.find_control(id='field-username').value = username
+        br.form.find_control(id='field-loginFormPassword').value = password
 
         # submit the form
         br.submit()
@@ -56,29 +66,26 @@ def genbbcode(username, password, threads=[]):
     # for each thread
     for thread in threads:
         print 'Updating %s [%d]...' % (thread.get('title', 0), thread.get('t', 0))
-        # open the thread edit page
-        br.open('http://www.minecraftforum.net/index.php?app=forums&module=post&section=post&do=edit_post&f=%d&t=%d&p=%d&st=' % (thread.get('f', 0), thread.get('t', 0), thread.get('p', 0)))
-
-        # print the title of the window, just to make sure
-        print '  Title: "%s"' % br.title()
-
-        # inital form id
-        frmid = 0
-
-        # find the postingform id
-        for frm in br.forms():
-            if frm.attrs['id'] == 'postingform':
-                break
-            frmid += 1
-
-        # select the form and fill in the information
-        br.select_form(nr=frmid)
-        tag = thread.get('tag', None)
-        title = thread.get('title', '')
-        br.form['TopicTitle'] = '[%s] %s' % (tag, title) if tag and len(tag) > 0 else title
-        br.form['ipsTags'] = ','.join(thread.get('tags', []))
 
         try:
+            # open the thread edit page
+            br.open('http://www.minecraftforum.net/comments/%d/edit' % (thread.get('p', 0)))
+
+            # print the title of the window, just to make sure
+            print '  Title: "%s"' % br.title()
+
+            # inital form id
+            frmid = 0
+
+            # find the postingform id
+            # for frm in br.forms():
+            #     if frm.attrs['id'] == 'postingform':
+            #         break
+            #     frmid += 1
+
+            # select the form and fill in the information
+            br.select_form(nr=frmid)
+
             with open(thread.get('file', None), 'r') as fh:
                 content = ''.join(fh.readlines())
 
@@ -86,13 +93,16 @@ def genbbcode(username, password, threads=[]):
                     content = content.replace('%%%s%%' % (key), value)
 
                 content = content.replace('<', '&lt;').replace('>', '&gt;')
+                control = br.form.find_control(id='field-c%d-body-wysiwyg-bbcode' % (thread.get('p', 0)))
 
-                br.form['Post'] = content
+                control.value = content
+
+            # submit the form
+            response = br.submit(id='field-c%d-submit' % (thread.get('p', 0))).read()
+            j = json.loads(response)
+            print '  Response: %s' % (j['result'])
         except BaseException as e:
-            print 'ERROR! %s' % (e)
-
-        # submit the form
-        br.submit()
+            print '  ERROR! %s' % (e)
 
     # save cookies
     cj.save('cookies.txt', ignore_discard=False, ignore_expires=False)

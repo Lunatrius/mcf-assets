@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2.7
 import genbbcode
 # mcfdata can be ommited, but I preffer to have that data on git,
 # leaving out only the username and password
