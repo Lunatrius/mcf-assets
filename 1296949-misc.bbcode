@@ -18,7 +18,7 @@ ________________________________________________________________________________
 [size=%sizeh1%][b]LunatriusCore[/b][/size]
 [color=rgb(255, 0, 0)][b]ATTENTION![/b][/color] This is a [color=rgb(255, 0, 0)]REQUIRED[/color] mod in order for any of the other mods to work in [b]1.7.2 or later[/b]. It contains the core shared classes used by all mods I release. If you don't install it along with any of the other mods here, Minecraft will crash. You have been warned!
 
-[size=%sizeh2%][b]Downloads[/b][/size][list]
+[size=%sizeh2%][b][color=rgb(0, 200, 200)]Downloads[/color][/b][/size][list]
 [*][Forge] [url=https://mods.io/mods/1025]Download (mods.io)[/url]
 [*][Forge/Mirror] [url=%downloadurl%/LunatriusCore]Download (mc.lunatri.us)[/url]
 [*][Forge/Mirror] [url=http://curse.com/project/225605]Mirror (curse.com)[/url]
@@ -29,22 +29,19 @@ ________________________________________________________________________________
 
 
 [size=%sizeh1%][b]InGame Info [color=rgb(255, 0, 0)]XML[/color][/b] (+[b][color=rgb(255, 0, 0)]Text[/color][/b] +[b][color=rgb(255, 0, 0)]JSON[/color][/b])[/size]
-Display various information directly only you ingame screen.
+Display various information directly on your ingame screen.
+This mod is a "fork" of [url=http://www.minecraftforum.net/forums/t/1281180-treecapitator-crystalwing]bspkrs' version[/url] which he kept updated for all Minecraft versions from 1.0 to 1.6.4 (the original author of the mod is DaftPVF).
 
-[size=%sizeh2%][b]Notes[/b][/size]
-In the latest 1.7.10 versions (starting with 2.8.0.[b]58[/b]) you can open a list of all tags by using [color=rgb(0, 128, 0)][font=courier new,courier][b]/igi taglist[/b][/font][/color]. I hope that I can add the "functions" to the same list sometime in the future as well. For now a list of available function can be found on the wiki.
-
-Starting with 2.8.0.[b]59[/b] the config will no longer be automatically extracted from the jar file. If you want to tweak it you can use one of the following commands to extract the config:
+[size=%sizeh2%][b]Notes[/b][/size][list]
+[*]2.4.1.[b]27[/b]+ ~ added support for bspkrs' [b]text format[/b] with minor modifications:
+Color codes (&f, &a, &r) have to use the [b]$[/b] symbol instead of the [b]&[/b] symbol (&f => $f, &a => $r, ...).
+The syntax for boolean tags (slimes, daytime, raining, ...; check the download page for a list of all tags) has changed a bit.
+Example: The slime tag has to be changed from [color=rgb(0, 128, 0)][font=courier new,courier][b]<slimes[yes/no]>[/b][/font][/color] to [color=rgb(0, 128, 0)][font=courier new,courier][b]<if[slimes[yes/no]]>[/b][/font][/color].
+[*]2.8.0.[b]58[/b]+ ~ you can open a list of all tags by using [color=rgb(0, 128, 0)][font=courier new,courier][b]/igi taglist[/b][/font][/color] (functions coming soon, hopefully)
+[*]2.8.0.[b]59[/b]+ ~ the config is no longer be automatically extracted from the jar file. If you want to tweak it you can use one of the following commands to extract the config:
 [code]/igi save InGameInfo.xml
 /igi save InGameInfo.json
 /igi save InGameInfo.txt[/code]
-
-This mod is a "fork" of [url=http://www.minecraftforum.net/forums/t/1281180-treecapitator-crystalwing]bspkrs' version[/url] which he kept updated with all Minecraft versions from 1.0 to 1.6.4 (the original author of the mod is DaftPVF).
-As of version 2.4.1.[b]27[/b] InGame Info XML supports bspkrs' [b]text format[/b], however there are a few things that have to be adjusted for it to work as you're used to.
-[list]
-[*]Color codes (&f, &a, &r) have to use the [b]$[/b] symbol instead of the [b]&[/b] symbol (&f => $f, &a => $r, ...).
-[*]The syntax for boolean tags (slimes, daytime, raining, ...; check the download page for a list of all tags) has changed a bit.
-Example: The slime tag would have to be modified from [color=rgb(0, 128, 0)][font=courier new,courier][b]<slimes[yes/no]>[/b][/font][/color] to [color=rgb(0, 128, 0)][font=courier new,courier][b]<if[slimes[yes/no]]>[/b][/font][/color].
 [/list]
 
 [size=%sizeh2%][b]Authors[/b][/size]
@@ -63,7 +60,7 @@ Special thanks to [url=http://www.minecraftforum.net/members/BioMasterZap]BioMas
 [img]http://i.imgur.com/PkgdY.png[/img]
 [/spoiler]
 
-[size=%sizeh2%][b]Downloads[/b][/size][list]
+[size=%sizeh2%][b][color=rgb(0, 200, 200)]Downloads[/color][/b][/size][list]
 [*][Forge] [url=https://mods.io/mods/1022]Download (mods.io)[/url]
 [*][Forge/Mirror] [url=%downloadurl%/InGameInfoXML]Download (mc.lunatri.us)[/url]
 [*][Forge/Mirror] [url=http://curse.com/project/225604]Mirror (curse.com)[/url]
@@ -92,7 +89,7 @@ http://www.youtube.com/watch?v=_V4t58_Oi48
 [img]http://i.imgur.com/nlPPa.png[/img]
 [/spoiler]
 
-[size=%sizeh2%][b]Downloads[/b][/size][list]
+[size=%sizeh2%][b][color=rgb(0, 200, 200)]Downloads[/color][/b][/size][list]
 [*][Forge] [url=https://mods.io/mods/1024]Download (mods.io)[/url]
 [*][Forge/Mirror] [url=%downloadurl%/MonsterSpawnHighlighter]Download (mc.lunatri.us)[/url]
 [*][Source] [url=https://github.com/Lunatrius/Monster-Spawn-Highlighter]github.com[/url]
@@ -115,7 +112,7 @@ It will group all items of the same type and experience orbs into stacks of a [b
 [img]http://i.imgur.com/vEnIT.png[/img]
 [/spoiler]
 
-[size=%sizeh2%][b]Downloads[/b][/size][list]
+[size=%sizeh2%][b][color=rgb(0, 200, 200)]Downloads[/color][/b][/size][list]
 [*][Forge] [url=https://mods.io/mods/1023]Download (mods.io)[/url]
 [*][Forge/Mirror] [url=%downloadurl%/Stackie]Download (mc.lunatri.us)[/url]
 [*][Forge/Mirror] [url=http://curse.com/project/225606]Mirror (curse.com)[/url]
@@ -130,7 +127,7 @@ This mod allows the user to send custom IMC messages to mods. This is particular
 
 [b]Note:[/b] this mod requires you to know whether a mod has an IMC API and what it looks like. You can find examples for Treecapitator and Thermal Expansion 3 on the wiki. I will [b]try[/b] to keep that list up to date as people notify me of IMC APIs.
 
-[size=%sizeh2%][b]Downloads[/b][/size][list]
+[size=%sizeh2%][b][color=rgb(0, 200, 200)]Downloads[/color][/b][/size][list]
 [*][Forge] [url=https://mods.io/mods/1054]Download (mods.io)[/url]
 [*][Forge/Mirror] [url=%downloadurl%/DynIMC]Download (mc.lunatri.us)[/url]
 [*][Source] [url=https://github.com/Lunatrius/DynIMC]github.com[/url]
@@ -142,7 +139,7 @@ ________________________________________________________________________________
 [size=%sizeh1%][b]Profiles[/b][/size]
 This mod allows the user to set up multiple sets of settings, allowing to quickly switch between them (example: "afk" and "normal", where "afk" has graphic settings turned to the bare minimum). It adds a single command, "/profile". Help is provided in the game.
 
-[size=%sizeh2%][b]Downloads[/b][/size][list]
+[size=%sizeh2%][b][color=rgb(0, 200, 200)]Downloads[/color][/b][/size][list]
 [*][Forge] [url=https://mods.io/mods/1063]Download (mods.io)[/url]
 [*][Forge/Mirror] [url=%downloadurl%/Profiles]Download (mc.lunatri.us)[/url]
 [*][Source] [url=https://github.com/Lunatrius/Profiles]github.com[/url]
